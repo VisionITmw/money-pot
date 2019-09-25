@@ -1,0 +1,23 @@
+body{
+    background-color: #fafafa;
+}
+
+
+#login-container{
+    margin-top:11em;
+}
+
+#login-card{
+    width:350px;
+
+}
+
+
+.appbar{
+    position:relative !important;
+}
+
+img.img-logo{
+    width:30px;
+    height:30px;
+}
