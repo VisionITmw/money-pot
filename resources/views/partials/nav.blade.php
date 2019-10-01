@@ -23,7 +23,7 @@
                     <span class="icon"><span class="mif-coins"></span></span>
                     <span class="caption">Loans</span>
                     <span class="badges">
-                              <span class="badge inline">11</span>
+                              <span class="badge inline">{{$loan_count}}</span>
                           </span>
                 </a>
             </li>
@@ -32,16 +32,16 @@
                     <span class="icon"><span class="mif-credit-card"></span></span>
                     <span class="caption">Penalties</span>
                     <span class="badges">
-                              <span class="badge inline">11</span>
+                              <span class="badge inline">{{$penalties_count}}</span>
                           </span>
                 </a>
             </li>
             <li>
-                <a href="{{route('loans.repayments')}}">
+                <a href="{{route('repayments')}}">
                     <span class="icon"><span class="mif-money"></span></span>
                     <span class="caption">Repayments</span>
                     <span class="badges">
-                              <span class="badge inline">11</span>
+                              <span class="badge inline">{{$repayments_count}}</span>
                           </span>
                 </a>
             </li>
@@ -50,7 +50,7 @@
                     <span class="icon"><span class="mif-suitcase"></span></span>
                     <span class="caption">Schemes</span>
                     <span class="badges">
-                              <span class="badge inline">11</span>
+                              <span class="badge inline">{{$schemes_count}}</span>
                           </span>
                 </a>
             </li>

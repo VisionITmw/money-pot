@@ -59,13 +59,40 @@ class LoanController extends Controller
 
     public function edit(Loan $loan)
     {
-        return view('loans.edit')->with(['loans'=>[]]);
+        return view('loans.edit')->with([
+            'loan'=>$loan,
+            'clients'=>Client::all(),
+            'schemes'=>Scheme::all()
+        ]);
     }
 
 
     public function update(Request $request, Loan $loan)
     {
-        //
+        $this->validate($request,[
+            'amount'=>"required|numeric",
+            'client'=>"required|numeric|exists:clients,id",
+            'scheme'=>"required|numeric|exists:schemes,id",
+            'date'=>"required|date",
+        ]);
+
+
+        $scheme = Scheme::findOrFail(request('scheme')); //
+
+        $data = [
+            'scheme_id'=>request('scheme'),
+            'client_id'=>request('client'),
+            'date'=>request('date'),
+            'due'=>Carbon::parse(request('date'))->addDays($scheme->duration), // calc days payable
+            'amount'=>request('amount'),
+            'interest'=>$scheme->interest
+        ];
+
+        $loan->update($data);
+
+        \Session::flash('success-notification',"Loan entry has been updated");
+
+        return redirect()->route('loans.show',$loan->id);
     }
 
     public function destroy(Loan $loan)
@@ -79,5 +106,12 @@ class LoanController extends Controller
         }
 
         return redirect()->route('loans.index');
+    }
+
+    public function repayments(Loan $loan)
+    {
+        return view('loans.repayments')->with([
+            'loan'=>$loan
+        ]);
     }
 }

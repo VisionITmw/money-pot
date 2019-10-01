@@ -27,9 +27,9 @@
                         <div class="card-content p-2">
                             <table class="table striped table-border" data-role="table"
                                    data-show-search="true"
-                                   data-show-table-info="false"
+                                   data-show-table-info="true"
                                    data-show-rows-steps="false"
-                                   data-show-pagination="false">
+                                   data-show-pagination="true">
                                 <thead>
                                 <tr>
                                     <th>#ID</th>
@@ -65,7 +65,7 @@
                                         <td>{{$loan->id}}</td>
                                         <td>{{$loan->client->name}}</td>
                                         <td>+(265)&nbsp;{{$loan->client->phone}}</td>
-                                        <td>{{$loan->date}}</td>
+                                        <td>{{$loan->date->calendar()}}</td>
                                         <td>{{$loan->due}}</td>
                                         <td>{{number_format($loan->amount,2)}}</td>
                                         <td>{{$loan->interest}} %</td>

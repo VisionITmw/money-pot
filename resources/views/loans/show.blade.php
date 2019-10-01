@@ -64,7 +64,7 @@
                                 </tr><!-- ./ row -->
                                 <tr>
                                     <td>Date</td>
-                                    <td>{{$loan->date}}</td>
+                                    <td>{{$loan->date->calendar()}}</td>
                                 </tr><!-- ./ row -->
                                 <tr>
                                     <td>Due</td>
@@ -77,10 +77,47 @@
 
                                 </tbody>
                             </table>
+
+
+                        </div><!-- ./details -->
+
+                    </div>
+                    @if($loan->writeOff)
+                        <div class="card ">
+                            <div class="card-header py-2">
+                                <strong>Loan has been written off </strong>
+                            </div>
+                            <div class="card-content p-2">
+                                {{$loan->writeOff->reason}}
+                            </div>
                         </div>
+                    @endif
 
-                    </div><!-- ./details -->
+                    @if(count($loan->repayments)>0)
+                        <div class="card ">
+                            <div class="card-header py-2">
+                                <strong>Repayments </strong>
+                            </div>
+                            <div class="card-content p-2">
+                                <p>
+                                    Balance : <strong>{{number_format($loan->balance,2)}}</strong>
+                                </p>
+                                <hr>
+                               @if($loan->fullyRepaid())
+                                   <i class="mif mif-checkmark"></i>&nbsp; Full Payment
+                               @else
 
+                                    <i class="mif mif-star-half"></i>&nbsp; Partial Payment
+
+
+                                @endif
+
+                                <span class="place-right">
+                                    <a href="{{route('loans.repayments',$loan->id)}}" class="button small primary">Repayments</a>
+                                </span>
+                            </div>
+                        </div>
+                    @endif
                     <div class="card">
                         <div class="card-header">
                             <i class="mif mif-info"></i>&nbsp;Addition Details
@@ -97,29 +134,42 @@
 
                     </div><!-- ./controls -->
 
-                        <div class="card">
-                            <div class="card-content p-2 ">
-                                <button class="button primary">
+                    <div class="card">
+                        <div class="card-content p-2 ">
+                            @if(!$loan->fullyPaid())
+                                <a href="{{route('loans.edit',$loan->id)}}" class="button primary ">
                                     <i class="mif mif-pencil"></i>&nbsp;Update
-                                </button>
-                                <button class="button bg-red fg-white">
+                                </a>
+
+                                <a href="{{route('write-offs.create',$loan->id)}}" class="button bg-red fg-white ">
                                     <i class="mif mif-bin"></i>&nbsp;Write Off
-                                </button>
-                                <button class="button bg-red fg-white">
-                                    <i class="mif mif-checkmark"></i>&nbsp;Mark as Repaid
-                                </button>
-                                <button class="button bg-red fg-white">
+                                </a>
+                                <a href="{{route('repayments.create',$loan->id)}}" class="button bg-red fg-white ">
+                                    <i class="mif mif-plus"></i>&nbsp;Repayment
+                                </a>
+
+                                <button class="button bg-red fg-white ">
                                     <i class="mif mif-bell"></i>&nbsp;Send Reminder
                                 </button>
-
                                 <div class="place-right">
-                                    <a href="{{route('loans.index')}}" class="button dark fg-white">
+                                    <a href="{{route('loans.index')}}" class="button dark fg-white ">
                                         <i class="mif mif-backspace"></i>&nbsp;Back
                                     </a>
                                 </div>
-                            </div>
+                            @else
+                                <small>
+                                    Loan has been rapaid/written off
+                                </small>
+                                <div class="">
+                                    <a href="{{route('loans.index')}}" class="button dark fg-white ">
+                                        <i class="mif mif-backspace"></i>&nbsp;Back
+                                    </a>
+                                </div>
+                            @endif
 
-                        </div><!-- ./controls -->
+                        </div>
+
+                    </div><!-- ./controls -->
 
 
                 </div>

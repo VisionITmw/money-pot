@@ -22,12 +22,12 @@
                         <div class="content">
                             <div class="p-2">
                                 <div>Clients</div>
-                                <div class="text-bold text-leader">41,400</div>
+                                <div class="text-bold text-leader">{{$data['clients']['metric']}}</div>
                             </div>
 
                             <div class="pl-2 pr-2">
                                 <span class="text-small">
-                                    70% Increase in 30 Days
+                                    {{$data['clients']['increase']}} % Increase in 30 Days
                                 </span>
                             </div>
                         </div>
@@ -39,12 +39,12 @@
                         <div class="content">
                             <div class="p-2">
                                 <div>Loans</div>
-                                <div class="text-bold text-leader">41,400</div>
+                                <div class="text-bold text-leader"> {{$data['loans']['metric']}}</div>
                             </div>
 
                             <div class="pl-2 pr-2">
                                 <span class="text-small">
-                                    20% Increase in 30 Days
+                                     {{$data['loans']['increase']}}% Increase in 30 Days
                                 </span>
                             </div>
                         </div>
@@ -56,12 +56,12 @@
                         <div class="content">
                             <div class="p-2">
                                 <div>Overdue</div>
-                                <div class="text-bold text-leader">3</div>
+                                <div class="text-bold text-leader"> {{$data['overdue']['metric']}}</div>
                             </div>
 
                             <div class="pl-2 pr-2">
                                 <span class="text-small">
-                                    30% Increase in 30 Days
+                                     {{$data['overdue']['increase']}}% Increase in 30 Days
                                 </span>
                             </div>
                         </div>
@@ -73,12 +73,12 @@
                         <div class="content">
                             <div class="p-2">
                                 <div>Repayments to date</div>
-                                <div class="text-bold text-leader">14,201,400</div>
+                                <div class="text-bold text-leader"> {{$data['repayments']['metric']}}</div>
                             </div>
 
                             <div class="pl-2 pr-2">
                                 <span class="text-small">
-                                    100% Increase in 30 Days
+                                     {{$data['repayments']['increase']}}% Increase in 30 Days
                                 </span>
                             </div>
                         </div>

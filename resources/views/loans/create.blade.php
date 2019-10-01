@@ -13,7 +13,7 @@
         </h4>
 
 
-        <div class="scheme-form-container grid">
+        <div class="form-container grid">
             <div class="row">
                 <div class="cell-4">
                     <div class="card win-shadow">
@@ -32,7 +32,7 @@
                                     </small>
                                 </div>
                                 <div class="form-group">
-                                    <label for="name">Scheme Type</label>
+                                    <label for="scheme">Scheme Type</label>
                                     <select name="scheme" data-role="select" class="{{$errors->has('scheme') ? 'invalid' : ''}}">
                                         @foreach($schemes as $scheme)
                                             <option value="{{$scheme->id}}" {{old('scheme')==$scheme->id ? 'selected':''}}>{{$scheme->info}}</option>
@@ -43,21 +43,21 @@
                                     </small>
                                 </div>
                                 <div class="form-group">
-                                    <label for="name">Amount (MWK)</label>
-                                    <input type="number" name="amount" data-role="input" value="{{old('amount')}}" class="{{$errors->has('amount') ? 'invalid' : ''}}" placeholder="Client's firstname">
+                                    <label for="amount">Amount (MWK)</label>
+                                    <input type="number" name="amount" data-role="input" value="{{old('amount')}}" class="{{$errors->has('amount') ? 'invalid' : ''}}" placeholder="amount taken">
                                     <small class="invalid_feedback">
                                         {{$errors->first('amount')}}
                                     </small>
                                 </div>
                                 <div class="form-group">
-                                    <label for="name">Date</label>
-                                    <input name="date" data-role="datepicker" value="{{old('date')}}" class="{{$errors->has('date') ? 'invalid' : ''}}" placeholder="Client's firstname">
+                                    <label for="date">Date</label>
+                                    <input name="date" data-role="datepicker" value="{{old('date')}}" class="{{$errors->has('date') ? 'invalid' : ''}}" placeholder="date taken">
                                     <small class="invalid_feedback">
                                         {{$errors->first('date')}}
                                     </small>
                                 </div>
                                 <div class="form-group">
-                                    <label for="name">Addition Details</label>
+                                    <label for="details">Addition Details</label>
                                     <textarea name="details" value="{{old('details')}}" class="{{$errors->has('details') ? 'invalid' : ''}}"  rows="5">{{old('details')}}</textarea>
                                     <small class="invalid_feedback">
                                         {{$errors->first('details')}}
